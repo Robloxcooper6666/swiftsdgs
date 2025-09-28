@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SDGs — 永續發展目標 簡介</title>
+  <meta name="description" content="以友善響應式介面介紹聯合國17項永續發展目標（SDGs）。" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: linear-gradient(120deg, #0f172a 0%, #0b3a60 50%, #054a32 100%);
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --soft-white: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.7);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Noto Sans TC', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      line-height: 1.45;
+      color: var(--soft-white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background: var(--bg1);
+    }
+    .bg-shapes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .float {
+      position: absolute;
+      border-radius: var(--radius-full);
+      opacity: 0.12;
+      filter: blur(30px);
+      animation: float 18s ease-in-out infinite;
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.2, 1);
+    }
+    .float:hover {
+      transform: scale(1.1);
+      opacity: 0.15;
+    }
+    .f1 {
+      width: 420px;
+      height: 420px;
+      background: #00bfa5;
+      left: -6%;
+      top: 8%;
+      animation-duration: 26s;
+    }
+    .f2 {
+      width: 300px;
+      height: 300px;
+      background: #0ea5e9;
+      right: -6%;
+      top: 20%;
+      animation-duration: 22s;
+    }
+    .f3 {
+      width: 240px;
+      height: 240px;
+      background: #ffb020;
+      left: 30%;
+      bottom: -6%;
+      animation-duration: 20s;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-40px) translateX(30px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .logo .mark {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #10b981, #3b82f6);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: white;
+      font-size: 18px;
+    }
+    .site-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 18px;
+    }
+    .hero {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-left {
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(6px);
+    }
+    .kicker {
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+      opacity: 0;
+      font-size: 13px;
+      transform: translateY(6px);
+      transition: all 600ms ease;
+    }
+    .headline {
+      font-size: 36px;
+      margin: 12px 0 8px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 600ms ease;
+    }
+    .lead {
+      color: var(--muted);
+      margin-bottom: 18px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 600ms ease;
+    }
+    .cta {
+      display: flex;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 600ms ease;
+    }
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(90deg, #06b6d4, #7c3aed, #06b6d4);
+      background-size: 200% 100%;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+      font-weight: 700;
+      transition: all 0.5s ease;
+    }
+    .btn:hover {
+      background-position: 100% 0;
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.8);
+      transform: translateY(-2px);
+    }
+    .secondary {
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(2, 6, 23, 0.4);
+    }
+    .hero-card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      overflow-y: auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 500ms cubic-bezier(.2, .9, .2, 1);
+      transition-delay: var(--delay, 0ms);
+    }
+    .goal-mark {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #052f2a;
+    }
+    .goal-title {
+      font-weight: 800;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .goal-desc {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(2, 6, 23, 0.7);
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    footer {
+      margin: 40px 0 80px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+    }
+    .anim-container {
+      position: fixed;
+      inset: 0;
+      background-color: #0f172a;
+      z-index: 9999;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .anim-container.active {
+      display: flex;
+      opacity: 1;
+    }
+    .anim-content {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .anim-content h2 {
+        font-size: 2.5em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        letter-spacing: 2px;
+        position: relative;
+    }
+    .anim-content h2:after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: white;
+        margin: 10px auto 0;
+        opacity: 0;
+        transform: scaleX(0);
+        transition: all 0.5s ease;
+    }
+    .anim-content.content-ready h2:after {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    .anim-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      font-size: 1.25em;
+      line-height: 1.6;
+      margin-bottom: 1em;
+      text-align: left;
+    }
+    .anim-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2em;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: var(--radius-full);
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .anim-close-btn:hover {
+      opacity: 1;
+    }
+    @media (max-width: 1000px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero-left { padding: 18px; }
+      .headline { font-size: 28px; }
+      .anim-content h2 { font-size: 2em; }
+      .anim-line { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="float f1"></div>
+    <div class="float f2"></div>
+    <div class="float f3"></div>
+  </div>
+
+  <div class="anim-container" id="animContainer">
+    <button class="anim-close-btn" id="animCloseBtn">×</button>
+    <div class="anim-content"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark">SDG</div>
+        <div>
+          <div class="site-title">永續發展目標（SDGs）簡介</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.65)">為了地球與人類的未來 · 17 項行動目標</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">關於SDGs</a>
+        <a href="#goals">17個目標</a>
+        <a href="#game">小遊戲</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-left">
+          <div class="kicker" id="kicker">永續 · 共好 · 行動</div>
+          <h1 class="headline" id="hero-title">聯合國永續發展目標（SDGs） — 一個更美好的未來</h1>
+          <p class="lead">本APP由陳麒安 | GPT | gemini | deepseek 共同製作<br>
+              SDGs 是 聯合國於 2015 年提出的 17 項永續發展目標，希望在 2030 年之前，解決人類面臨的貧窮、環境、教育、平等、經濟與氣候變遷等重大問題。這些目標適用於所有國家，強調「不讓任何人掉隊」（Leave no one behind）。</p>
+          <div class="cta">
+            <button class="btn" id="learnBtn">開始探索</button>
+            <button class="secondary" id="animBtn">觀看簡介動畫</button>
+          </div>
+        </div>
+        <aside class="hero-card" aria-hidden="false">
+          <div style="font-weight:800;font-size:18px">網站使用說明</div>
+          <p>本網站為您提供一個簡單易懂的方式來探索聯合國永續發展目標（SDGs）。
+              <br><br>1. 快速上手
+觀看動畫：點擊「觀看簡介動畫」，即可欣賞一段生動的介紹短片，快速了解 SDGs 的核心精神。
+
+開始探索：點擊「開始探索」或向下捲動，即可看到17個目標卡片。<br><br>
+
+2. 瀏覽目標
+點擊卡片：點選任一目標卡片，會彈出詳細視窗。
+
+深入了解：在詳細視窗中，您可以閱讀該目標的具體內容，以及「你能怎麼做？」的實用建議。
+
+關閉視窗：點擊右上角的「×」即可回到主頁。</p>
+        </aside>
+      </section>
+
+      <section id="goals" style="margin-top:18px">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:12px">
+          <h2 style="margin:0;font-size:20px">17項目標一覽</h2>
+          <div style="color:var(--muted);font-size:14px">向下滾動查看與點擊展開</div>
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
+
+      <section id="game" style="margin-top:48px;background:rgba(255,255,255,0.05);padding:24px;border-radius:var(--radius-md);border:1px solid var(--glass-border)">
+        <h2 style="margin-top:0">SDGs 行動小遊戲</h2>
+        <p>你覺得以下情境最符合哪一個永續發展目標呢？</p>
+        <div id="game-card" style="background:var(--card-bg);padding:24px;border-radius:var(--radius-md);border:1px solid var(--glass-border);">
+          <div id="game-question" style="font-weight:700;font-size:1.2rem;margin-bottom:16px;"></div>
+          <div id="game-options" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:12px;">
+            </div>
+          <div id="game-feedback" style="margin-top:16px;font-weight:700;min-height:24px;"></div>
+          <button id="next-question" class="btn" style="margin-top:24px;display:none;">下一題</button>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:48px;background:rgba(255,255,255,0.05);padding:24px;border-radius:var(--radius-md);border:1px solid var(--glass-border)">
+        <h2 style="margin-top:0">聯絡資訊</h2>
+        <p>如有問題歡迎透過以下方式聯繫：</p>
+        <p>Email: <a href="mailto:cooper.chen.1103@icloud.com" style="color:#4cc9f0;text-decoration:none">cooper.chen.1103@icloud.com</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <p style="margin-bottom:8px">**關於本網站**</p>
+      <p style="font-size:14px;max-width:600px;margin:0 auto 20px;color:rgba(255,255,255,0.8)">
+        本APP由陳麒安 | GPT | gemini | deepseek 共同製作，本app用友善、視覺化的方式介紹聯合國永續發展目標（SDGs），讓更多人了解並參與到這些全球性的行動中。我相信，透過資訊的普及與分享，每個人都能在自己的生活中為永續發展做出貢獻。
+      </p>
+      <p style="margin:0">陳麒安 | CC© 2025 Cooper Chen</p>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+  <script>
+    const goals = [
+      {num:1,title:'消除貧窮',desc:'在所有形式與各地區消除貧窮。',content:'### 實際目標與進展\n\n* **子目標：** 確保所有人都擁有社會保障，特別是窮困和弱勢族群。\n* **數據：** 儘管全球貧窮率持續下降，但仍有超過7億人生活在極端貧困中（每日收入低於1.9美元）。\n\n### 你能怎麼做？\n\n* **支持公平貿易產品：** 購買公平貿易商品，確保生產者獲得合理報酬。\n* **捐款或志願服務：** 參與支持貧困社區的非營利組織或慈善活動。', icon:'&#x1F45D;'},
+      {num:2,title:'消除飢餓',desc:'終止飢餓，確保糧食安全並促進可持續農業。',content:'### 實際目標與進展\n\n* **子目標：** 終止所有形式的營養不良，並確保所有人都能全年取得安全、營養且充足的糧食。\n* **數據：** 據估計，全球仍有約8.2億人面臨飢餓問題，且人數有回升趨勢。\n\n### 你能怎麼做？\n\n* **減少食物浪費：** 妥善規劃飲食，並將剩食做適當處理或再利用。\n* **支持在地小農：** 購買在地、當季的農產品，減少食物里程與碳足跡。', icon:'&#x1F33E;'},
+      {num:3,title:'良好健康與福祉',desc:'確保健康生活並促進所有年齡的福祉。',content:'### 實際目標與進展\n\n* **子目標：** 降低新生兒、兒童及孕產婦死亡率，並終結傳染病蔓延。\n* **數據：** 全球在兒童疫苗接種方面取得顯著進展，但仍有許多地區面臨醫療資源短缺問題。\n\n### 你能怎麼做？\n\n* **維持健康生活：** 規律運動、均衡飲食、充足睡眠，並定期健康檢查。\n* **理性用藥：** 不濫用抗生素，以免產生抗藥性。', icon:'&#x2764;&#xFE0F;'},
+      {num:4,title:'優質教育',desc:'為所有人提供平等且具品質的教育機會。',content:'### 實際目標與進展\n\n* **子目標：** 確保所有兒童都能接受免費、公平且優質的小學和中學教育。\n* **數據：** 儘管小學入學率已大幅提升，全球仍有數千萬名兒童失學，尤其是在衝突和貧窮地區。\n\n### 你能怎麼做？\n\n* **終身學習：** 持續進修、閱讀、探索新知，並分享知識給身邊的人。\n* **支持教育專案：** 捐款或擔任志工，支持偏鄉或弱勢學童的教育機會。', icon:'&#x1F4DA;'},
+      {num:5,title:'性別平等',desc:'實現性別平等、賦予所有女性與女孩權能。',content:'### 實際目標與進展\n\n* **子目標：** 終結對女性和女孩的一切歧視，並消除所有形式的暴力。\n* **數據：** 許多國家的法律已保障性別平等，但在職場、政治參與和薪資方面仍存在明顯差距。\n\n### 你能怎麼做？\n\n* **破除性別刻板印象：** 尊重每個人的選擇，不以性別預設他們的職涯或生活方式。\n* **為女性發聲：** 關注職場上的性別薪資差異，並在適當時為女性權益發聲。', icon:'&#x2640;&#xFE0F;'},
+      {num:6,title:'乾淨的水與衛生',desc:'為所有人提供可得的水和衛生設施。',content:'### 實際目標與進展\n\n* **子目標：** 確保所有人都能使用安全且負擔得起的飲用水，並改善衛生設施。\n* **數據：** 全球仍有超過20億人缺乏安全的飲用水，特別是在開發中國家。\n\n### 你能怎麼做？\n\n* **節約用水：** 縮短淋浴時間、使用省水裝置、回收利用洗米水、洗菜水。\n* **不亂丟垃圾：** 不將垃圾、廢棄物丟入河川、水庫，維護水質清潔。', icon:'&#x1F4A7;'},
+      {num:7,title:'可負擔且乾淨的能源',desc:'確保普及可持續能源。',content:'### 實際目標與進展\n\n* **子目標：** 確保所有人都可獲得負擔得起、可靠且永續的現代能源服務。\n* **數據：** 全球仍有近8億人缺乏電力，其中大部分位於撒哈拉以南非洲地區。\n\n### 你能怎麼做？\n\n* **節約用電：** 隨手關燈、拔掉不使用的電器插頭、選用節能家電。\n* **支持再生能源：** 關注並支持再生能源發展，或考慮安裝太陽能板。', icon:'&#x26A1;'},
+      {num:8,title:'良好工作與經濟成長',desc:'促進包容與永續的經濟成長與工作機會。',content:'### 實際目標與進展\n\n* **子目標：** 保護勞工權益，並確保所有勞工，包括移工，都能享有安全的工作環境。\n* **數據：** 全球青年失業率仍高，且非正規就業人口佔比依然龐大。\n\n### 你能怎麼做？\n\n* **支持在地產業：** 購買在地商品，幫助本地經濟發展。\n* **關注勞動權益：** 了解並支持勞工權益保障，不購買血汗工廠製造的商品。', icon:'&#x1F4BC;'},
+      {num:9,title:'產業、創新與基礎建設',desc:'建設韌性基礎設施並促進創新。',content:'### 實際目標與進展\n\n* **子目標：** 建設永續、有韌性的基礎設施，並推動包容與永續的工業化。\n* **數據：** 許多開發中國家在基礎設施建設方面仍面臨巨大挑戰，需要更多國際合作與投資。\n\n### 你能怎麼做？\n\n* **支持循環經濟：** 優先購買採用環保材質或可回收設計的產品。\n* **關注科技倫理：** 思考科技發展對社會與環境的影響，並鼓勵負責任的創新。', icon:'&#x1F6A8;'},
+      {num:10,title:'減少不平等',desc:'在各國及國家內減少不平等。',content:'### 實際目標與進展\n\n* **子目標：** 賦權並促進社會、經濟與政治上邊緣化群體的包容性，無論其年齡、性別、身心障礙、種族、族裔、宗教、經濟或其他身份。\n* **數據：** 全球最富有的1%人口擁有的財富超過其餘99%人口的總和，收入不平等問題日益嚴重。\n\n### 你能怎麼做？\n\n* **尊重多元：** 尊重並接納不同種族、性別、性向與身心障礙者的文化與價值觀。\n* **支持弱勢團體：** 關注並支持幫助弱勢群體的社會福利組織。', icon:'&#x2796;'},
+      {num:11,title:'永續城市與社區',desc:'讓城市及人類住區包容、安全、韌性與永續。',content:'### 實際目標與進展\n\n* **子目標：** 確保人人享有安全、可負擔的住宅與基本服務，並改善城市基礎設施。\n* **數據：** 全球超過一半的人口居住在城市，且預計此數字將持續上升，城市面臨交通擁堵、空氣污染等挑戰。\n\n### 你能怎麼做？\n\n* **使用大眾運輸：** 盡量搭乘公車、捷運，或騎單車、步行，減少私家車使用。\n* **參與社區活動：** 關心並參與你居住社區的公共事務，共同打造更好的生活環境。', icon:'&#x1F3D9;&#xFE0F;'},
+      {num:12,title:'負責任消費與生產',desc:'促進永續的消費與生產模式。',content:'### 實際目標與進展\n\n* **子目標：** 鼓勵企業採用永續商業模式，並讓消費者了解永續消費的重要性。\n* **數據：** 人類資源消耗速度遠超地球能恢復的速度，若不改變消費模式，到2050年需要3個地球的資源才能滿足需求。\n\n### 你能怎麼做？\n\n* **3R原則：** 減少（Reduce）、重複使用（Reuse）、回收（Recycle）你的消費行為。\n* **理性購物：** 避免衝動購物，購買真正需要的物品，並選擇環保標章的產品。', icon:'&#x267B;&#xFE0F;'},
+      {num:13,title:'氣候行動',desc:'採取緊急行動因應氣候變遷及其影響。',content:'### 實際目標與進展\n\n* **子目標：** 強化各國應對氣候變遷相關災害的應變能力，並推動氣候教育。\n* **數據：** 全球平均氣溫持續上升，極端氣候事件頻率和強度增加，已造成嚴重的生態與經濟損失。\n\n### 你能怎麼做？\n\n* **節能減碳：** 減少能源消耗，多搭大眾運輸工具。\n* **關注氣候議題：** 了解氣候變遷對你生活區域的影響，並支持相關政策。', icon:'&#x26C5;'},
+      {num:14,title:'水下生態',desc:'保護並可永續利用海洋與海洋資源。',content:'### 實際目標與進展\n\n* **子目標：** 有效管理並保護海洋與沿海生態系統，以避免嚴重的不利影響。\n* **數據：** 全球海洋酸化日益嚴重，塑膠污染對海洋生物造成巨大威脅，每年有數百萬噸塑膠垃圾流入海洋。\n\n### 你能怎麼做？\n\n* **淨灘活動：** 參與淨灘志工活動，清理海洋垃圾。\n* **減少塑膠使用：** 攜帶環保餐具、購物袋、水壺，減少使用一次性塑膠製品。', icon:'&#x1F41F;'},
+      {num:15,title:'陸地生態',desc:'保護、恢復及促進陸地生態系統的永續利用。',content:'### 實際目標與進展\n\n* **子目標：** 保護、恢復及永續利用森林、濕地、山地與旱地生態系統。\n* **數據：** 森林砍伐和土地退化問題日益嚴重，威脅到生物多樣性，每年有約100萬物種面臨滅絕風險。\n\n### 你能怎麼做？\n\n* **不購買非法木材製品：** 選擇有認證的木材製品。\n* **支持生態保育：** 關注野生動物保育，不購買瀕危動物製品。', icon:'&#x1F333;'},
+      {num:16,title:'和平與公正',desc:'促進和平社會、提供司法及建立有效、負責任的制度。',content:'### 實際目標與進展\n\n* **子目標：** 大幅減少所有形式的暴力與相關死亡率，並終結對兒童的虐待、剝削、販賣和各種形式的暴力。\n* **數據：** 全球衝突和暴力問題依然存在，許多人因戰亂而流離失所。\n\n### 你能怎麼做？\n\n* **支持人權：** 尊重並捍衛人權，不歧視任何人。\n* **關心國際新聞：** 了解全球衝突與人權問題，並支持相關和平倡議。', icon:'&#x1F54A;&#xFE0F;'},
+      {num:17,title:'夥伴關係',desc:'加強實施工具並活化全球夥伴關係以推動永續發展。',content:'### 實際目標與進展\n\n* **子目標：** 加強國際合作，動員更多資源來支持發展中國家實現永續發展目標。\n* **數據：** 公部門、私部門、公民社會組織的合作對於實現SDGs至關重要，但仍有許多國家面臨資金和技術缺口。\n\n### 你能怎麼做？\n\n* **參與志工服務：** 參與你關注的議題相關的志工服務。\n* **分享資訊：** 將 SDGs 的資訊分享給身邊的朋友和家人，讓更多人參與進來。', icon:'&#x1F91D;'}
+    ];
+    const colors = ['#e5243b', '#dda63a', '#4c9f38', '#c5192d', '#ff3a21', '#26bde2', '#fcc30b', '#a21942', '#fd6925', '#dd1367', '#3f7e44', '#8a3ae8', '#3a9ad9', '#0a97d9', '#56c02b', '#00689d', '#19486a'];
+    const grid = document.getElementById('grid');
+
+    goals.forEach((g, i) => {
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.setAttribute('tabindex', '0');
+      el.dataset.index = i;
+      el.innerHTML = `
+        <div class="goal-mark" style="background:${colors[i]};color:white; opacity:0; transform: scale(0.5);">${String(g.num).padStart(2, '0')}</div>
+        <div style="flex:1">
+          <h4 class="goal-title" style="opacity:0; transform: translateY(10px);">${g.title} <span class="goal-icon">${g.icon}</span></h4>
+          <p class="goal-desc" style="opacity:0; transform: translateY(10px);">${g.desc}</p>
+        </div>`;
+      grid.appendChild(el);
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      })
+      .fromTo(el, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" })
+      .fromTo(el.querySelector('.goal-mark'), { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, "<0.2")
+      .fromTo(el.querySelector('.goal-title'), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, "<0.2")
+      .fromTo(el.querySelector('.goal-desc'), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, "<0.2");
+    });
+
+    const animContainer = document.getElementById('animContainer');
+    const animContent = document.querySelector('.anim-content');
+    const animCloseBtn = document.getElementById('animCloseBtn');
+
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      if (card) {
+        const goalIndex = parseInt(card.dataset.index);
+        showGoalAnimation(goals[goalIndex], colors[goalIndex]);
+      }
+    });
+
+    grid.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const card = e.target.closest('.card');
+        if (card) {
+          const goalIndex = parseInt(card.dataset.index);
+          showGoalAnimation(goals[goalIndex], colors[goalIndex]);
+        }
+      }
+    });
+
+    function showGoalAnimation(goal, color) {
+      document.body.style.overflow = 'hidden';
+      animContainer.style.backgroundColor = color;
+      animContent.innerHTML = '';
+      animContent.classList.remove('content-ready');
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          animContent.classList.add('content-ready');
+        }
+      });
+
+      tl.to(animContainer, { opacity: 1, duration: 0.8, display: 'flex' })
+        .to(animContainer, {
+          backgroundColor: '#0b1220',
+          duration: 1.2,
+          ease: "power2.inOut"
+        })
+        .fromTo(animContent, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
+        .addLabel('contentStart');
+
+      const titleEl = document.createElement('h2');
+      titleEl.innerHTML = `${goal.num}. ${goal.title} ${goal.icon}`;
+      animContent.appendChild(titleEl);
+
+      const contentParts = goal.content.split('\n\n');
+      contentParts.forEach(part => {
+          if (part.trim() === '') return;
+          const lines = part.split('\n').filter(line => line.trim() !== '');
+          const sectionEl = document.createElement('div');
+
+          lines.forEach(line => {
+              const p = document.createElement('p');
+              p.className = 'anim-line';
+
+              if (line.startsWith('###')) {
+                p.style.fontWeight = '700';
+                p.style.fontSize = '1.5em';
+                p.textContent = line.replace('###', '');
+              } else if (line.startsWith('*')) {
+                p.innerHTML = `<span style="font-size:1.5em;line-height:0.8;display:inline-block;vertical-align:middle;margin-right:8px">&bull;</span>` + line.replace('*', '').trim();
+                p.style.fontSize = '1.1em';
+              } else {
+                p.textContent = line.trim();
+              }
+              sectionEl.appendChild(p);
+          });
+          animContent.appendChild(sectionEl);
+      });
+
+      gsap.fromTo('.anim-line', { opacity: 0, y: 20 }, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    }
+
+    animCloseBtn.addEventListener('click', () => {
+      gsap.to(animContainer, {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          animContainer.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      gsap.timeline()
+        .fromTo('#kicker', { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.6 })
+        .fromTo('.headline', { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
+        .fromTo('.lead', { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3")
+        .fromTo('.cta', { opacity: 0, y: 6 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
+    });
+
+    document.getElementById('learnBtn').addEventListener('click', () => {
+      document.getElementById('goals').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.body.addEventListener('mouseenter', () => {
+      gsap.to('.float', {
+        scale: 1.1,
+        opacity: 0.15,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.2
+      });
+    });
+
+    document.body.addEventListener('mouseleave', () => {
+      gsap.to('.float', {
+        scale: 1,
+        opacity: 0.12,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    });
+
+    const gameQuestions = [
+      {
+        question: '情境：你隨手關燈、拔掉不使用的電器插頭，並選擇節能家電。',
+        answer: 7,
+        options: [6, 7, 13, 11]
+      },
+      {
+        question: '情境：你決定騎自行車上班，而不是開車。',
+        answer: 13,
+        options: [9, 8, 11, 13]
+      },
+      {
+        question: '情境：你購買公平貿易咖啡，確保農民獲得合理報酬。',
+        answer: 1,
+        options: [1, 2, 8, 10]
+      },
+      {
+        question: '情境：你在購物時自備環保袋和水壺，減少塑膠製品的使用。',
+        answer: 12,
+        options: [14, 6, 12, 11]
+      },
+      {
+        question: '情境：你參與社區的志工服務，幫助清理公園的垃圾。',
+        answer: 11,
+        options: [15, 11, 17, 10]
+      }
+    ];
+
+    const gameQuestionEl = document.getElementById('game-question');
+    const gameOptionsEl = document.getElementById('game-options');
+    const gameFeedbackEl = document.getElementById('game-feedback');
+    const nextQuestionBtn = document.getElementById('next-question');
+    let currentQuestionIndex = 0;
+
+    function renderQuestion() {
+      const q = gameQuestions[currentQuestionIndex];
+      gameQuestionEl.textContent = q.question;
+      gameOptionsEl.innerHTML = '';
+      gameFeedbackEl.textContent = '';
+      nextQuestionBtn.style.display = 'none';
+
+      const shuffledOptions = q.options.sort(() => Math.random() - 0.5);
+
+      shuffledOptions.forEach(optionNum => {
+        const optionGoal = goals.find(g => g.num === optionNum);
+        const btn = document.createElement('button');
+        btn.className = 'secondary';
+        btn.textContent = `目標 ${optionGoal.num}: ${optionGoal.title}`;
+        btn.addEventListener('click', () => checkAnswer(optionNum));
+        gameOptionsEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedAnswer) {
+      const q = gameQuestions[currentQuestionIndex];
+      const correct = selectedAnswer === q.answer;
+      if (correct) {
+        gameFeedbackEl.style.color = '#10b981';
+        gameFeedbackEl.textContent = '✅ 太棒了，答案正確！';
+      } else {
+        gameFeedbackEl.style.color = '#ef4444';
+        gameFeedbackEl.textContent = '❌ 答錯了，請再試試看。';
+      }
+      gameOptionsEl.querySelectorAll('button').forEach(btn => btn.disabled = true);
+      nextQuestionBtn.style.display = 'block';
+    }
+
+    nextQuestionBtn.addEventListener('click', () => {
+      currentQuestionIndex = (currentQuestionIndex + 1) % gameQuestions.length;
+      renderQuestion();
+      gameOptionsEl.querySelectorAll('button').forEach(btn => btn.disabled = false);
+    });
+
+    renderQuestion();
+
+    document.getElementById('animBtn').addEventListener('click', () => {
+        showIntroAnimation();
+    });
+
+    function showIntroAnimation() {
+        document.body.style.overflow = 'hidden';
+        animContainer.style.backgroundColor = '#0f172a';
+        animContent.innerHTML = '';
+        animContent.classList.remove('content-ready');
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                animContent.classList.add('content-ready');
+            }
+        });
+
+        tl.to(animContainer, { opacity: 1, duration: 0.8, display: 'flex' })
+          .fromTo(animContent, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
+          .addLabel('contentStart');
+
+        const introHtml = `
+            <h2>SDGs 永續發展目標簡介</h2>
+            <p class="anim-line">聯合國於2015年提出的17項全球目標，旨在2030年前解決貧窮、飢餓、氣候變遷、不平等和環境惡化等全球性挑戰。</p>
+            <p class="anim-line">這些目標適用於所有國家，不僅是開發中國家，強調全球合作、公私部門共同參與的重要性。</p>
+            <p class="anim-line">核心精神為「不讓任何人掉隊」，確保永續發展的果實能惠及每一個人。</p>
+            <p class="anim-line" style="font-weight:700">準備好探索每個目標了嗎？</p>
+        `;
+        animContent.innerHTML = introHtml;
+
+        gsap.fromTo('.anim-line', { opacity: 0, y: 20 }, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.3,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+    }
+
+    gsap.from("#game", {
+      scrollTrigger: {
+        trigger: "#game",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    gsap.from("#contact", {
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power2.out"
+    });
+  </script>
+</body>
+</html>
